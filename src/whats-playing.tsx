@@ -36,7 +36,7 @@ function formatTime(timestamp: string): string {
   });
 }
 
-function formatShowDetails(show: Show, channel_name: String, includeImage = false): string {
+function formatShowDetails(show: Show, channel_name: string, includeImage = false): string {
   const details = show.embeds?.details;
   let markdown = '';
 
@@ -75,7 +75,7 @@ function formatMarkdown(data: NTSResponse): string {
   });
 
   // Show images at the bottom
-  data.results.forEach((channel, index) => {
+  data.results.forEach((channel) => {
     if (channel.now.embeds?.details?.media?.picture_thumb) {
       content += `![Channel ${channel.channel_name}](${channel.now.embeds.details.media.picture_medium}) `;
     }
