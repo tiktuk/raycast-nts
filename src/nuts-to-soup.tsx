@@ -35,15 +35,11 @@ function formatTime(timestamp: string): string {
   });
 }
 
-function isReplay(title: string): boolean {
-  return title.includes('(R)');
-}
-
 function formatShowDetails(show: Show, includeImage = false): string {
   const details = show.embeds?.details;
   let markdown = '';
 
-  markdown += `### ${show.broadcast_title}${isReplay(show.broadcast_title) ? ' (REPLAY)' : ''}\n`;
+  markdown += `### ${show.broadcast_title}\n`;
   markdown += `**${formatTime(show.start_timestamp)} - ${formatTime(show.end_timestamp)}**\n`;
 
   if (details?.genres && details.genres.length > 0) {
