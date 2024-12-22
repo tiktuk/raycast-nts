@@ -11,6 +11,7 @@ interface Show {
       genres?: Array<{ value: string }>;
       location_long?: string;
       media?: {
+        picture_medium?: string;
         picture_thumb?: string;
       };
     };
@@ -72,7 +73,7 @@ function formatMarkdown(data: NTSResponse): string {
   content += "---\n\n";
   data.results.forEach((channel, index) => {
     if (channel.now.embeds?.details?.media?.picture_thumb) {
-      content += `![Channel ${channel.channel_name}](${channel.now.embeds.details.media.picture_thumb}) `;
+      content += `![Channel ${channel.channel_name}](${channel.now.embeds.details.media.picture_medium}) `;
     }
   });
 
