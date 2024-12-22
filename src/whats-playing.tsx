@@ -30,28 +30,28 @@ interface NTSResponse {
 
 function formatTime(timestamp: string): string {
   const date = new Date(timestamp);
-  return date.toLocaleTimeString(undefined, { 
-    hour: 'numeric',
-    minute: 'numeric',
+  return date.toLocaleTimeString(undefined, {
+    hour: "numeric",
+    minute: "numeric",
   });
 }
 
 function formatShowDetails(show: Show, channel_name: string, includeImage = false): string {
   const details = show.embeds?.details;
-  let markdown = '';
+  let markdown = "";
 
   markdown += `## ${channel_name}: ${show.broadcast_title}\n`;
   markdown += `**${formatTime(show.start_timestamp)} - ${formatTime(show.end_timestamp)}**\n`;
 
   if (details?.genres && details.genres.length > 0) {
-    markdown += `${details.genres.map(g => g.value).join(', ')}`;
+    markdown += `${details.genres.map((g) => g.value).join(", ")}`;
   }
 
   if (details?.location_long) {
     markdown += ` • ${details.location_long}`;
   }
 
-  markdown += '\n\n';
+  markdown += "\n\n";
 
   if (details?.description) {
     markdown += `${details.description}\n\n`;
