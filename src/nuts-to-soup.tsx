@@ -28,7 +28,11 @@ interface NTSResponse {
 }
 
 function formatTime(timestamp: string): string {
-  return new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const date = new Date(timestamp);
+  return date.toLocaleTimeString(undefined, { 
+    hour: 'numeric',
+    minute: 'numeric',
+  });
 }
 
 function isReplay(title: string): boolean {
@@ -47,7 +51,7 @@ function formatShowDetails(show: Show, includeImage = false): string {
   }
 
   if (details?.location_long) {
-    markdown += ` • ${details.location_long}`;
+    markdown += ` • 📍 ${details.location_long}`;
   }
 
   markdown += '\n\n';
