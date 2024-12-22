@@ -11,9 +11,9 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "show-channel-info",
-      "title": "Show Channel Info",
-      "description": "Shows the currently playing NTS Radio shows",
+      "name": "whats-playing",
+      "title": "What's Playing?",
+      "description": "Shows what's playing on NTS Radio",
       "mode": "view"
     }
   ],
