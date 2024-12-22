@@ -53,6 +53,10 @@ function formatShowDetails(show: Show, channel_name: String, includeImage = fals
 
   markdown += '\n\n';
 
+  if (details?.description) {
+    markdown += `${details.description}\n\n`;
+  }
+
   if (includeImage && details?.media?.picture_thumb) {
     markdown += `![](${details.media.picture_thumb})\n`;
   }
@@ -67,10 +71,10 @@ function formatMarkdown(data: NTSResponse): string {
   data.results.forEach((channel) => {
     content += formatShowDetails(channel.now, channel.channel_name, false);
     content += `**Next:** ${channel.next.broadcast_title} (${formatTime(channel.next.start_timestamp)})\n\n`;
+    content += "---\n\n";
   });
 
   // Show images at the bottom
-  content += "---\n\n";
   data.results.forEach((channel, index) => {
     if (channel.now.embeds?.details?.media?.picture_thumb) {
       content += `![Channel ${channel.channel_name}](${channel.now.embeds.details.media.picture_medium}) `;
