@@ -35,11 +35,11 @@ function formatTime(timestamp: string): string {
   });
 }
 
-function formatShowDetails(show: Show, includeImage = false): string {
+function formatShowDetails(show: Show, channel_name: String, includeImage = false): string {
   const details = show.embeds?.details;
   let markdown = '';
 
-  markdown += `### ${show.broadcast_title}\n`;
+  markdown += `## ${channel_name}: ${show.broadcast_title}\n`;
   markdown += `**${formatTime(show.start_timestamp)} - ${formatTime(show.end_timestamp)}**\n`;
 
   if (details?.genres && details.genres.length > 0) {
@@ -64,8 +64,7 @@ function formatMarkdown(data: NTSResponse): string {
 
   // Channel information
   data.results.forEach((channel) => {
-    content += `## Channel ${channel.channel_name}\n`;
-    content += formatShowDetails(channel.now, false);
+    content += formatShowDetails(channel.now, channel.channel_name, false);
     content += `**Next:** ${channel.next.broadcast_title} (${formatTime(channel.next.start_timestamp)})\n\n`;
   });
 
