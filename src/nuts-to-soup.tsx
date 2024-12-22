@@ -51,7 +51,7 @@ function formatShowDetails(show: Show, includeImage = false): string {
   }
 
   if (details?.location_long) {
-    markdown += ` • 📍 ${details.location_long}`;
+    markdown += ` • ${details.location_long}`;
   }
 
   markdown += '\n\n';
